@@ -1,5 +1,5 @@
 ---
-- name: Remove packages
+- name: remove packages
   tags:
     - full-install
     - light-install
