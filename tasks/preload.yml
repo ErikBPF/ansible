@@ -11,21 +11,6 @@
     state: present
     update_cache: true
   when: ansible_distribution == "Archlinux"
-  ignore_errors: true
-  notify: restart preload
-
-- name: Install preload package when distribution is Ubuntu
-  tags:
-    - full-install
-    - light-install
-    - preload
-  ansible.builtin.package:
-    name:
-      - preload
-    state: present
-  become: true
-  when: ansible_distribution == "Ubuntu"
-  notify: restart preload
 
 - name: copy file preload.conf to /etc
   tags:
@@ -39,4 +24,3 @@
     group: root
     mode: 0644
   become: true
-  notify: restart preload
