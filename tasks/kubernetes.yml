@@ -1,4 +1,15 @@
 ---
+- name: remove packages
+  tags:
+    - full-install
+    - light-install
+    - packages
+  package:
+    name:
+      - nodejs
+    state: absent
+    update_cache: no
+  become: true
 
 - name: Change iptables to prevent conflict
   ansible.builtin.shell: yes | yay -S iptables-nft
@@ -18,7 +29,7 @@
       - docker-machine
       - docker-machine-driver-kvm2
       - minikube
-      - lens
+      - lens-bin
     use: yay
     state: present
     update_cache: false

@@ -110,7 +110,6 @@
       - vim
       - grml-zsh-config
       - zsh
-      - nodejs
     state: absent
     update_cache: no
   become: true
