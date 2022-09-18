@@ -110,6 +110,7 @@
       - vim
       - grml-zsh-config
       - zsh
+      - iptables
       - qemu-desktop
       - gnome-virtualboxes
       - virtualbox-guest-utils-nox
