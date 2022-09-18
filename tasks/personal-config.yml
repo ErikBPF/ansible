@@ -71,14 +71,3 @@
   with_items:
     - { src: 'btop/themes/dracula.theme', dest: "{{ lookup('env', 'HOME') }}/.config/btop/themes/dracula.theme" }
     - { src: 'btop/btop.conf', dest: "{{ lookup('env', 'HOME') }}/.config/btop/btop.conf" }
-  
-- name: Download us intl layout keyboard
-  tags:
-    - full-install
-    - light-install
-    - anki
-  ansible.builtin.get_url:
-    url: https://raw.githubusercontent.com/raelgc/win_us_intl/master/.XCompose
-    dest: "{{ lookup('env', 'HOME') }}"
-    force: true
-    mode: 0777
