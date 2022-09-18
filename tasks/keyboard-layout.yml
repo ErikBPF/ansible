@@ -49,4 +49,4 @@
     - users
   copy: src={{ item.src }} dest={{ item.dest }}
   with_items:
-    - { src: '.xprofile', dest: "{{ lookup('env/', 'HOME') }}/.xprofile" }
+    - { src: '.xprofile', dest: "{{ lookup('env', 'HOME') }}/.xprofile" }
