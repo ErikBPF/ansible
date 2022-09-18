@@ -1,3 +1,17 @@
+- name: Remove packages
+  tags:
+    - full-install
+    - light-install
+    - packages
+  package:
+    name:
+      - qemu-desktop
+      - gnome-virtualboxes
+      - virtualbox-guest-utils-nox
+    state: absent
+    update_cache: no
+  become: true
+
 - name: Install KVM/QEMU packages
   tags:
     - full-install

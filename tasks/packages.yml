@@ -110,9 +110,6 @@
       - vim
       - grml-zsh-config
       - zsh
-      - qemu-desktop
-      - gnome-virtualboxes
-      - virtualbox-guest-utils-nox
     state: absent
     update_cache: no
   become: true
