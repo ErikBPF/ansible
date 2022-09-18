@@ -43,7 +43,10 @@
     update_cache: false
   ignore_errors: false
 
-- name: add uim configs to xprofile
-  ansible.builtin.shell: echo "export GTK_IM_MODULE=uim \nexport QT_IM_MODULE=uim\nexport QT_IM_MODULE=uim \nuim-xim & \nexport XMODIFIERS=@im=uim " > {{ lookup('env', 'HOME') }}/.xprofile
-  args:
-    executable: /bin/bash
+- name: copy .xprofile
+  tags:
+    - full-install
+    - users
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - { src: '.xprofile', dest: "{{ lookup('env/', 'HOME') }}/.xprofile" }
