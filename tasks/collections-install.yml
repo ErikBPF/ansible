@@ -18,6 +18,7 @@
     name:
       - "{{ python_pip }}"
       - python-virtualenv
+      - psutil
     state: present
     update_cache: true
   become: true
