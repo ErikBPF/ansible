@@ -28,7 +28,7 @@
     key: "{{ item.key }}"
     value: "{{ item.value }}"
   with_items:
-    - { key: "/org/gnome/settings-daemon/plugins/xsettings/disabled-gtk-modules", value: "@as ["'keyboard'"]" }
+    - { key: "/org/gnome/settings-daemon/plugins/xsettings/disabled-gtk-modules", value: "@as ['keyboard']" }
 
 - name: install uim
   tags:
