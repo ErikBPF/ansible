@@ -6,8 +6,7 @@
     path: "{{ lookup('env', 'HOME') }}/.config/fish"
     recurse: yes
     state: directory
-  become: true
-
+  
 - name: copy fish files
   tags:
     - full-install
@@ -17,8 +16,7 @@
     - { src: 'fish/ftc.fish', dest: '/usr/share/doc/find-the-command/ftc.fish' }
     - { src: 'fish/config.fish', dest: "{{ lookup('env', 'HOME') }}/.config/fish/config.fish"}
     - { src: 'fish/fish_variables', dest: "{{ lookup('env', 'HOME') }}/.config/fish/fish_variables"}
-  become: true
-
+  
 
 - name: make kitty config folder
   tags:
@@ -28,8 +26,7 @@
     path: "{{ lookup('env', 'HOME') }}/.config/kitty"
     recurse: yes
     state: directory
-  become: true
-
+  
 - name: copy kitty files
   tags:
     - full-install
@@ -39,8 +36,7 @@
     - { src: 'kitty/diff.conf', dest: "{{ lookup('env', 'HOME') }}/.config/kitty/diff.conf" }
     - { src: 'kitty/dracula.conf', dest: "{{ lookup('env', 'HOME') }}/.config/kitty/dracula.conf" }
     - { src: 'kitty/kitty.conf', dest: "{{ lookup('env', 'HOME') }}/.config/kitty/kitty.conf" }
-  become: true
-
+  
 - name: make flameshot config folder
   tags:
     - full-install
@@ -49,8 +45,7 @@
     path: "{{ lookup('env', 'HOME') }}/.config/flameshot"
     recurse: yes
     state: directory
-  become: true
-
+  
 - name: copy flameshot files
   tags:
     - full-install
@@ -58,8 +53,7 @@
   copy: src={{ item.src }} dest={{ item.dest }}
   with_items:
     - { src: 'flameshot/flameshot.ini', dest: "{{ lookup('env', 'HOME') }}/.config/flameshot/flameshot.ini" }
-  become: true
-
+  
 - name: make btop config folder
   tags:
     - full-install
@@ -68,8 +62,7 @@
     path: "{{ lookup('env', 'HOME') }}/.config/btop/themes"
     recurse: yes
     state: directory
-  become: true
-
+  
 - name: copy btop files
   tags:
     - full-install
@@ -78,8 +71,7 @@
   with_items:
     - { src: 'btop/themes/dracula.theme', dest: "{{ lookup('env', 'HOME') }}/.config/btop/themes/dracula.theme" }
     - { src: 'btop/btop.conf', dest: "{{ lookup('env', 'HOME') }}/.config/btop/btop.conf" }
-  become: true
-
+  
 - name: Download us intl layout keyboard
   tags:
     - full-install
