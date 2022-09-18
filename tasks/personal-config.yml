@@ -1,0 +1,40 @@
+- name: copy fish files
+  tags:
+    - full-install
+    - users
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - { src: 'fish/ftc.fish', dest: '/usr/share/doc/find-the-command/ftc.fish' }
+    - { src: 'fish/config.fish', dest: "{{ lookup('env', 'HOME') }}/.config/fish/config.fish"}
+    - { src: 'fish/fish_variables', dest: "{{ lookup('env', 'HOME') }}/.config/fish/fish_variables"}
+  become: true
+
+- name: copy kitty files
+  tags:
+    - full-install
+    - users
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - { src: 'kitty/diff.conf', dest: "{{ lookup('env', 'HOME') }}/.config/kitty/diff.conf" }
+    - { src: 'kitty/dracula.conf', dest: "{{ lookup('env', 'HOME') }}/.config/kitty/dracula.conf" }
+    - { src: 'kitty/kitty.conf', dest: "{{ lookup('env', 'HOME') }}/.config/kitty/kitty.conf" }
+  become: true
+
+- name: copy flameshot files
+  tags:
+    - full-install
+    - users
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - { src: 'flameshot/flameshot.ini', dest: "{{ lookup('env', 'HOME') }}/.config/flameshot/flameshot.ini" }
+  become: true
+
+- name: copy btop files
+  tags:
+    - full-install
+    - users
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - { src: 'btop/themes/dracula.theme', dest: "{{ lookup('env', 'HOME') }}/.config/btop/themes/dracula.theme" }
+    - { src: 'btop/btop.conf', dest: "{{ lookup('env', 'HOME') }}/.config/btop/btop.conf" }
+  become: true

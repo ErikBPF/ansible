@@ -1,0 +1,100 @@
+---
+- hosts: localhost
+  connection: localhost
+  gather_facts: true
+  pre_tasks:
+  - name: Update cache of package manager
+    tags:
+      - full-install
+      - light-install
+      - packages
+      - always
+    package:
+      update_cache: true
+    become: true
+
+  - name: "Gathering Facts (Task)"
+    setup:
+    tags: ["packages", "full-install", "light-install", "locale", "preload"]
+    when: ansible_facts == {}
+
+# - hosts: all
+#   tags: base
+#   become: true
+#   roles:
+#     - base
+
+  tasks:
+    - include_tasks: tasks/collections-install.yml
+      tags:
+        - aur
+        - never
+        - collections-install
+    - include_tasks: tasks/ansible.yml
+      tags:
+        - full-install
+        - light-install
+        - users
+        - ansible
+    - include_tasks: tasks/keyboard-layout.yml
+      tags:
+        - full-install
+        - light-install
+        - keyboard
+    - include_tasks: tasks/locale.yml
+      tags:
+        - full-install
+        - light-install
+        - timezone
+        - locale
+    - include_tasks: tasks/git.yml
+      tags:
+        - full-install
+        - light-install
+        - git
+    - include_tasks: tasks/packages.yml
+      tags:
+        - full-install
+        - light-install
+        - packages
+        - processor-intel
+        - processor-amd
+        - nvidia
+        - xorg
+    - include_tasks: tasks/libvirt.yml
+      tags:
+        - full-install
+        - libvirt
+    - include_tasks: tasks/aur-packages.yml
+      tags:
+        - aur
+        - never
+    - include_tasks: tasks/preload.yml
+      tags:
+        - never
+        - aur
+        - preload
+    - include_tasks: tasks/docker.yml
+      tags:
+        - full-install
+        - docker
+    - include_tasks: tasks/kubernetes.yml
+      tags:
+        - full-install
+        - kubernetes
+    - include_tasks: tasks/develop.yml
+      tags:
+        - full-install
+    - include_tasks: tasks/productivity.yml
+      tags:
+        - full-install
+    - include_tasks: tasks/terminal.yml
+      tags:
+        - full-install
+    - include_tasks: tasks/yay-packages.yml
+      tags:
+        - full-install
+        - yay-packages
+    - include_tasks: tasks/personal-config.yml
+      tags:
+        - full-install
