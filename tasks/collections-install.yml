@@ -28,7 +28,6 @@
     name:
       - psutil
     state: present
-    update_cache: true
 
 - name: Install collection kewlfft.aur
   tags:
