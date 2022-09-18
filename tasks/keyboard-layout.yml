@@ -10,3 +10,40 @@
     group: root
     mode: 0644
   become: true
+
+- name: Download us intl layout keyboard
+  tags:
+    - full-install
+    - light-install
+    - anki
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/raelgc/win_us_intl/master/.XCompose
+    dest: "{{ lookup('env', 'HOME') }}"
+    force: true
+    mode: 0777
+
+- name: disable default keyboard module
+  become_user: erik
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  with_items:
+    - { key: "/org/gnome/settings-daemon/plugins/xsettings/disabled-gtk-modules", value: "@as ["'keyboard'"]" }
+
+- name: install uim
+  tags:
+    - full-install
+    - light-install
+    - packages
+  kewlfft.aur.aur:
+    name:
+      - uim
+    use: yay
+    state: present
+    update_cache: false
+  ignore_errors: false
+
+- name: add uim configs to xprofile
+  ansible.builtin.shell: echo "export GTK_IM_MODULE=uim \nexport QT_IM_MODULE=uim\nexport QT_IM_MODULE=uim \nuim-xim & \nexport XMODIFIERS=@im=uim " > {{ lookup('env', 'HOME') }}/.xprofile
+  args:
+    executable: /bin/bash
