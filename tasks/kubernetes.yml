@@ -1,4 +1,9 @@
 ---
+- name: Change iptables to prevente cpnflict
+  ansible.builtin.shell: yes | yay -S iptables-nft
+  args:
+    executable: /bin/bash
+    
 - name: Install kubernetes packages
   tags:
     - full-install
