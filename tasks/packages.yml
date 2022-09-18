@@ -107,11 +107,11 @@
     name:
       - arch-install-scripts
       - archinstall
-      - brltty
       - vim
       - grml-zsh-config
       - zsh
-      - devtools
+      - qemu-desktop
+      - gnome-virtualboxes
       - virtualbox-guest-utils-nox
     state: absent
     update_cache: no
