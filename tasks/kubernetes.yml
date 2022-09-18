@@ -1,9 +1,9 @@
 ---
-- name: Change iptables to prevente cpnflict
+- name: Change iptables to prevent conflict
   ansible.builtin.shell: yes | yay -S iptables-nft
   args:
     executable: /bin/bash
-    
+
 - name: Install kubernetes packages
   tags:
     - full-install
@@ -21,4 +21,3 @@
     use: yay
     state: present
     update_cache: false
-  become: true
