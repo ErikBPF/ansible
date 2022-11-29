@@ -183,6 +183,7 @@
     - {
         src: "bin",
         dest: "{{ lookup('env', 'HOME') }}/.local",
+        dir_mode: 0755,
         mode: 0755,
         recurse: yes,
       }
