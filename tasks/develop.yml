@@ -20,6 +20,21 @@
       #     - azure-cli
       - visual-studio-code-insiders-bin
       - baobab
+      - dnsmasq
+      - openssh
+      - dhclient
+      - dialog
+      - wpa_supplicant
+      - wireless_tools
+      - netctl
+      - inetutils
+      - openssh
+      - ntfs-3g
+      - nfs-utils
+      - openvpn
+      - ntfs-3g
+      - e2fsprogs
+      - smartmontools
     use: yay
     state: present
     update_cache: false

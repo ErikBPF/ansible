@@ -27,6 +27,7 @@
   ansible.builtin.pip:
     name:
       - psutil
+      - Mpris2
     state: present
 
 - name: Install collection kewlfft.aur

@@ -25,6 +25,7 @@
       - unrar
       - p7zip
       - unarchiver
+      - gparted
       - onlyoffice-bin
     use: yay
     state: present

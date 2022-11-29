@@ -1,4 +1,4 @@
-- name: install packages and update cache
+- name: install wm packages and update cache
   tags:
     - full-install
     - light-install
@@ -10,20 +10,27 @@
       - rofi
       - betterlockscreen
       - feh
-      - kubectx
-      - dashbinsh
-      - unixodbc
-      - find-the-command
-      - ttf-meslo-nerd-font-powerlevel10k
-      - blueman
       - arc-gtk-theme
       - vimix-cursors
       - tela-circle-icon-theme-git
-      #- nerd-fonts-fira-code
+      - nerd-fonts-fira-code
+      - code-insiders
+      - pavucontrol
+      - gnome-ssh-askpass3
+      - systemd-ssh-agent
+      - xorg
+      - lightdm
+      - lightdm-slick-greeter
+      - pipewire-alsa
+      - gst-libav
+      - gst-plugins-ugly
+      - gst-plugins-bad
+      - system-config-printer
       - arc-gtk-theme
       - arc-icon-theme
       - file-roller
       - nemo-fileroller
+      - gparted
       - pavucontrol
       - baobab
       - xreader
