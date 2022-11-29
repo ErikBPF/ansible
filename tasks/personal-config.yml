@@ -12,6 +12,7 @@
     - full-install
     - users
   copy: src={{ item.src }} dest={{ item.dest }}
+  mode: 755
   with_items:
     - {
         src: "qtile/autostart.sh",
@@ -133,6 +134,7 @@
     - full-install
     - users
   copy: src={{ item.src }} dest={{ item.dest }}
+  mode: 755
   with_items:
     - {
         src: "dunst/dunstrc",
@@ -153,6 +155,7 @@
     - full-install
     - users
   copy: src={{ item.src }} dest={{ item.dest }}
+  mode: 755
   with_items:
     - { src: "rofi", dest: "{{ lookup('env', 'HOME') }}/.config/rofi" }
 
@@ -170,6 +173,7 @@
     - full-install
     - users
   copy: src={{ item.src }} dest={{ item.dest }}
+  mode: 755
   with_items:
     - { src: "bin", dest: "{{ lookup('env', 'HOME') }}/.local/rofi" }
 
