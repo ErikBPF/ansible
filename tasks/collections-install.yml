@@ -28,6 +28,7 @@
     name:
       - psutil
       - Mpris2
+      - dbus-next
     state: present
 
 - name: Install collection kewlfft.aur
