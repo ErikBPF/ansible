@@ -32,7 +32,7 @@
       - authy
       - dashbinsh
       - unixodbc
-      - azure-cli
+      #- azure-cli
       #- spotify
       - teams
       - find-the-command
