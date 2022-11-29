@@ -5,6 +5,7 @@
     - packages
   kewlfft.aur.aur:
     name:
+      - qtile
       - wget
       - authy
       - nordpass-bin
@@ -20,14 +21,6 @@
       - brave-bin
       #- spotify
       - teams
-      - gparted
-      - ntfs-3g
-      - nfs-utils
-      - e2fsprogs
-      - smartmontools
-      - btrfs-progs
-      - gvfs
-      - gvfs-smb
       - unzip
       - unrar
       - p7zip

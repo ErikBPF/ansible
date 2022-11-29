@@ -5,34 +5,10 @@
     - packages
   kewlfft.aur.aur:
     name:
-      - wget
-      - base-devel
-      - flameshot
-      - nfs-utils
-      - cups
-      - hplip
-      - ghostscript
-      - gsfonts
-      - libcups
-      - libsecret
-      - openvpn
-      - discord
-      - python-pip
-      - net-tools
-      - pkgfile
+      - qtile
       - kubectx
-      - postgresql-libs
-      - fish
-      - kitty
-      - fzf
-      - bat
-      - exa
-      - brave-bin
-      - uim
-      - authy
       - dashbinsh
       - unixodbc
-      - teams
       - find-the-command
       - ttf-meslo-nerd-font-powerlevel10k
       - blueman
@@ -44,19 +20,9 @@
       - arc-icon-theme
       - file-roller
       - nemo-fileroller
-      - gparted
       - pavucontrol
       - baobab
       - xreader
-      - unzip
-      - unrar
-      - p7zip
-      - unarchiver
-      - nano
-      - neofetch
-      - btop
-      - nvtop
-      - onlyoffice-bin
     use: yay
     state: present
     update_cache: yes
