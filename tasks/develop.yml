@@ -19,7 +19,7 @@
       - dashbinsh
       - unixodbc
       #     - azure-cli
-      - code-insiders
+      - visual-studio-code-insiders-bin
       - baobab
       - dnsmasq
       - openssh
