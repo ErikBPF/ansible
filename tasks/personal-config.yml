@@ -157,11 +157,7 @@
     - users
   copy: src={{ item.src }} dest={{ item.dest }}
   with_items:
-    - {
-        src: "rofi",
-        dest: "{{ lookup('env', 'HOME') }}/.config/rofi",
-        mode: 755,
-      }
+    - { src: "rofi", dest: "{{ lookup('env', 'HOME') }}/.config", mode: 755 }
 
 - name: make bin config folder
   tags:
@@ -179,7 +175,7 @@
   copy: src={{ item.src }} dest={{ item.dest }}
 
   with_items:
-    - { src: "bin", dest: "{{ lookup('env', 'HOME') }}/.local/rofi", mode: 755 }
+    - { src: "bin", dest: "{{ lookup('env', 'HOME') }}/.local", mode: 755 }
 
 - name: make gtk-3.0 config folder
   tags:
