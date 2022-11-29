@@ -33,7 +33,7 @@
       - dashbinsh
       - unixodbc
       - azure-cli
-      - spotify
+      #- spotify
       - teams
       - find-the-command
       - ttf-meslo-nerd-font-powerlevel10k
