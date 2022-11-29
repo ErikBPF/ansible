@@ -39,7 +39,7 @@
       - arc-gtk-theme
       - vimix-cursors
       - tela-circle-icon-theme-git
-      - nerd-fonts-fira-code
+      #- nerd-fonts-fira-code
       - arc-gtk-theme
       - arc-icon-theme
       - file-roller
