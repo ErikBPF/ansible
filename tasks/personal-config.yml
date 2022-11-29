@@ -135,11 +135,11 @@
     - full-install
     - users
   copy: src={{ item.src }} dest={{ item.dest }}
-  mode: 755
   with_items:
     - {
         src: "dunst/dunstrc",
         dest: "{{ lookup('env', 'HOME') }}/.config/dunst/dunstrc",
+        mode: 755,
       }
 
 - name: make rofi config folder
@@ -156,9 +156,12 @@
     - full-install
     - users
   copy: src={{ item.src }} dest={{ item.dest }}
-  mode: 755
   with_items:
-    - { src: "rofi", dest: "{{ lookup('env', 'HOME') }}/.config/rofi" }
+    - {
+        src: "rofi",
+        dest: "{{ lookup('env', 'HOME') }}/.config/rofi",
+        mode: 755,
+      }
 
 - name: make bin config folder
   tags:
@@ -174,9 +177,9 @@
     - full-install
     - users
   copy: src={{ item.src }} dest={{ item.dest }}
-  mode: 755
+
   with_items:
-    - { src: "bin", dest: "{{ lookup('env', 'HOME') }}/.local/rofi" }
+    - { src: "bin", dest: "{{ lookup('env', 'HOME') }}/.local/rofi", mode: 755 }
 
 - name: make gtk-3.0 config folder
   tags:
