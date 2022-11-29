@@ -17,7 +17,7 @@
     - {
         src: "qtile/autostart.sh",
         dest: "{{ lookup('env', 'HOME') }}/.config/qtile/autostart.sh",
-        mode: 755,
+        mode: 0755,
       }
     - {
         src: "qtile/config.py",
@@ -139,7 +139,7 @@
     - {
         src: "dunst/dunstrc",
         dest: "{{ lookup('env', 'HOME') }}/.config/dunst/dunstrc",
-        mode: 755,
+        mode: 0755,
       }
 
 - name: make rofi config folder
@@ -157,7 +157,12 @@
     - users
   copy: src={{ item.src }} dest={{ item.dest }}
   with_items:
-    - { src: "rofi", dest: "{{ lookup('env', 'HOME') }}/.config", mode: 755 }
+    - {
+        src: "rofi",
+        dest: "{{ lookup('env', 'HOME') }}/.config",
+        mode: 0755,
+        recurse: yes,
+      }
 
 - name: make bin config folder
   tags:
@@ -175,7 +180,12 @@
   copy: src={{ item.src }} dest={{ item.dest }}
 
   with_items:
-    - { src: "bin", dest: "{{ lookup('env', 'HOME') }}/.local", mode: 755 }
+    - {
+        src: "bin",
+        dest: "{{ lookup('env', 'HOME') }}/.local",
+        mode: 0755,
+        recurse: yes,
+      }
 
 - name: make gtk-3.0 config folder
   tags:
