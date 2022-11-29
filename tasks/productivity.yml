@@ -18,7 +18,7 @@
       - libsecret
       - discord
       - brave-bin
-      - spotify
+      #- spotify
       - teams
       - gparted
       - ntfs-3g
