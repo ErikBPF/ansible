@@ -18,7 +18,7 @@
       - postman-bin
       - dashbinsh
       - unixodbc
-      - azure-cli
+      #     - azure-cli
       - code-insiders
       - baobab
       - dnsmasq
