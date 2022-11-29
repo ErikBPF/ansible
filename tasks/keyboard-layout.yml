@@ -22,14 +22,6 @@
     force: true
     mode: 0777
 
-- name: disable default keyboard module
-  become_user: erik
-  dconf:
-    key: "{{ item.key }}"
-    value: "{{ item.value }}"
-  with_items:
-    - { key: "/org/gnome/settings-daemon/plugins/xsettings/disabled-gtk-modules", value: "@as ['keyboard']" }
-
 - name: install uim
   tags:
     - full-install
@@ -49,4 +41,4 @@
     - users
   copy: src={{ item.src }} dest={{ item.dest }}
   with_items:
-    - { src: '.xprofile', dest: "{{ lookup('env', 'HOME') }}/.xprofile" }
+    - { src: ".xprofile", dest: "{{ lookup('env', 'HOME') }}/.xprofile" }

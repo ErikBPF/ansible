@@ -27,10 +27,10 @@
   tasks:
     - include_tasks: tasks/collections-install.yml
     - include_tasks: tasks/ansible.yml
+    - include_tasks: tasks/aur-packages.yml
     - include_tasks: tasks/keyboard-layout.yml
     - include_tasks: tasks/locale.yml
     - include_tasks: tasks/git.yml
-    - include_tasks: tasks/aur-packages.yml
     - include_tasks: tasks/packages.yml
     - include_tasks: tasks/libvirt.yml
     - include_tasks: tasks/preload.yml
