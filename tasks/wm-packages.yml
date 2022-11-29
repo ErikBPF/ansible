@@ -32,6 +32,10 @@
       - pavucontrol
       - baobab
       - xreader
+      - xidlehook
+      - lxsession
+      - nm-applet
+      - pa-applet
     use: yay
     state: present
     update_cache: yes
