@@ -12,11 +12,12 @@
     - full-install
     - users
   copy: src={{ item.src }} dest={{ item.dest }}
-  mode: 755
+
   with_items:
     - {
         src: "qtile/autostart.sh",
         dest: "{{ lookup('env', 'HOME') }}/.config/qtile/autostart.sh",
+        mode: 755,
       }
     - {
         src: "qtile/config.py",
