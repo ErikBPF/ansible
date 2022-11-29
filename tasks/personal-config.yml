@@ -165,7 +165,7 @@
       }
 
 - name: make rofi files 0755
-  command: find {{ lookup('env', 'HOME') }}/.config/rofi -type f -exec chmod -c 0755 {} \;
+  command: find {{ lookup('env', 'HOME') }}/.config/rofi -exec chmod -R -c 0755 {} \;
   register: chmod_result
   changed_when: 'chmod_result.stdout != ""'
 
@@ -188,7 +188,7 @@
     - { src: "bin", dest: "{{ lookup('env', 'HOME') }}/.local" }
 
 - name: make bin files 0755
-  command: find {{ lookup('env', 'HOME') }}/.local/bin -type f -exec chmod -c 0755 {} \;
+  command: find {{ lookup('env', 'HOME') }}/.local/bin -exec chmod -R -c 0755 {} \;
   register: chmod_result
   changed_when: 'chmod_result.stdout != ""'
 
