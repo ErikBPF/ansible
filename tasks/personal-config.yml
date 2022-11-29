@@ -14,11 +14,11 @@
   copy: src={{ item.src }} dest={{ item.dest }}
   with_items:
     - {
-        src: "qtile/config.fish",
+        src: "qtile/autostart.sh",
         dest: "{{ lookup('env', 'HOME') }}/.config/qtile/autostart.sh",
       }
     - {
-        src: "qtile/fish_variables",
+        src: "qtile/config.py",
         dest: "{{ lookup('env', 'HOME') }}/.config/qtile/config.py",
       }
 
