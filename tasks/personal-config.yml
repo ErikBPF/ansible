@@ -118,3 +118,119 @@
         src: "btop/btop.conf",
         dest: "{{ lookup('env', 'HOME') }}/.config/btop/btop.conf",
       }
+
+- name: make dunst config folder
+  tags:
+    - full-install
+    - users
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.config/dunst"
+    recurse: yes
+    state: directory
+
+- name: copy dunst files
+  tags:
+    - full-install
+    - users
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - {
+        src: "dunst/dunstrc",
+        dest: "{{ lookup('env', 'HOME') }}/.config/dunst/dunstrc",
+      }
+
+- name: make rofi config folder
+  tags:
+    - full-install
+    - users
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.config/rofi"
+    recurse: yes
+    state: directory
+
+- name: copy rofi files
+  tags:
+    - full-install
+    - users
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - { src: "rofi", dest: "{{ lookup('env', 'HOME') }}/.config/rofi" }
+
+- name: make bin config folder
+  tags:
+    - full-install
+    - users
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.local/bin"
+    recurse: yes
+    state: directory
+
+- name: copy bin files
+  tags:
+    - full-install
+    - users
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - { src: "bin", dest: "{{ lookup('env', 'HOME') }}/.local/rofi" }
+
+- name: make gtk-3.0 config folder
+  tags:
+    - full-install
+    - users
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.config/gtk-3.0"
+    recurse: yes
+    state: directory
+
+- name: copy gtk-3.0 files
+  tags:
+    - full-install
+    - users
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - {
+        src: "gtk-3.0/settings.ini",
+        dest: "{{ lookup('env', 'HOME') }}/.config/gtk-3.0/settings.ini",
+      }
+
+- name: make user Wallpaper folder
+  tags:
+    - full-install
+    - users
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.config/wallpapers"
+    recurse: yes
+    state: directory
+
+- name: copy user Wallpaper files
+  tags:
+    - full-install
+    - users
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - {
+        src: "wallpapers/wallpaper.png",
+        dest: "{{ lookup('env', 'HOME') }}/.config/wallpapers/wallpaper.png",
+      }
+
+- name: make system Wallpaper folder
+  tags:
+    - full-install
+    - users
+  become: True
+  file:
+    path: "/usr/share/wallpapers"
+    recurse: yes
+    state: directory
+
+- name: copy system Wallpaper files
+  tags:
+    - full-install
+    - users
+  become: True
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - {
+        src: "wallpapers/wallpaper.png",
+        dest: "/usr/share/wallpapers/wallpaper.png",
+      }
