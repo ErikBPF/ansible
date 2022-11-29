@@ -34,8 +34,10 @@
       - xreader
       - xidlehook
       - lxsession
-      - nm-applet
-      - pa-applet
+      - network-manager-applet
+      - pa-applet-git
+      - blueman
+      - brightnessctl
     use: yay
     state: present
     update_cache: yes
