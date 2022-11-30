@@ -38,7 +38,7 @@
       - pa-applet-git
       - blueman
       - brightnessctl
-      - xdg-user-dir
+      - xdg-user-dirs
       - arandr
     use: yay
     state: present
