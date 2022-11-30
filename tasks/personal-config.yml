@@ -2,7 +2,7 @@
   command: "{{ item }}"
   become: True
   with_items:
-    - xdg-user-dirs-update --force
+    - xdg-user-dirs-update
     - echo >> /etc/profile
     - echo 'export XDG_CONFIG_HOME="$HOME/.config"' >> /etc/profile
     - echo 'export XDG_CACHE_HOME="$HOME/.cache"' >> /etc/profile
@@ -258,7 +258,19 @@
     recurse: yes
     state: directory
 
-- name: copy system Wallpaper files
+- name: copy user Wallpaper files
+  tags:
+    - full-install
+    - users
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - {
+        src: "lightdm/.xsession",
+        dest: "{{ lookup('env', 'HOME') }}/.xsession",
+        mode: 0744,
+      }
+
+- name: copy system lightdm files
   tags:
     - full-install
     - users
@@ -266,6 +278,13 @@
   copy: src={{ item.src }} dest={{ item.dest }}
   with_items:
     - {
-        src: "wallpapers/wallpaper.png",
-        dest: "/usr/share/wallpapers/wallpaper.png",
+        src: "lightdm/slick-greeter.conf",
+        dest: "/etc/lightdm/slick-greeter.conf",
       }
+
+- name: update lightdm config files
+  command: "sed -i  {{ item }}"
+  become: True
+  with_items:
+    - "'s/^#greeter-session=example-gtk-gnome/greeter-session=lightdm-slick-greeter/' /etc/lightdm/lightdm.conf"
+    - "'s/^#!\/bin\/sh/#!\/bin\/bash/' /etc/lightdm/Xsession"
