@@ -39,6 +39,7 @@
       - blueman
       - brightnessctl
       - xdg-user-dir
+      - arandr
     use: yay
     state: present
     update_cache: yes

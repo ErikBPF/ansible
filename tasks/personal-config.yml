@@ -1,286 +1,286 @@
-# - name: make XDG compliant folders
-#   command: "{{ item }}"
-#   become: True
-#   with_items:
-#     - xdg-user-dirs-update
-#     - echo >> /etc/profile
-#     - echo 'export XDG_CONFIG_HOME="$HOME/.config"' >> /etc/profile
-#     - echo 'export XDG_CACHE_HOME="$HOME/.cache"' >> /etc/profile
-#     - echo 'export XDG_DATA_HOME="$HOME/.local/share"' >> /etc/profile
-#     - echo 'export XDG_STATE_HOME="$HOME/.local/state"' >> /etc/profile
-#     - echo 'export GOPATH="$XDG_DATA_HOME/go"' >> /etc/profile
-#     - echo 'export CARGO_HOME="$XDG_DATA_HOME/cargo"' >> /etc/profile
-#     - echo 'export LESSHISTFILE="$XDG_CONFIG_HOME/less/history"' >> /etc/profile
-#     - echo 'export LESSKEY="$XDG_CONFIG_HOME/less/keys"' >> /etc/profile
-#     - echo 'export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm"' >> /etc/profile
+- name: make XDG compliant folders
+  command: "{{ item }}"
+  become: True
+  with_items:
+    - xdg-user-dirs-update
+    - echo >> /etc/profile
+    - echo 'export XDG_CONFIG_HOME="$HOME/.config"' >> /etc/profile
+    - echo 'export XDG_CACHE_HOME="$HOME/.cache"' >> /etc/profile
+    - echo 'export XDG_DATA_HOME="$HOME/.local/share"' >> /etc/profile
+    - echo 'export XDG_STATE_HOME="$HOME/.local/state"' >> /etc/profile
+    - echo 'export GOPATH="$XDG_DATA_HOME/go"' >> /etc/profile
+    - echo 'export CARGO_HOME="$XDG_DATA_HOME/cargo"' >> /etc/profile
+    - echo 'export LESSHISTFILE="$XDG_CONFIG_HOME/less/history"' >> /etc/profile
+    - echo 'export LESSKEY="$XDG_CONFIG_HOME/less/keys"' >> /etc/profile
+    - echo 'export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm"' >> /etc/profile
 
-# - name: make qtile config folder
-#   tags:
-#     - full-install
-#     - users
-#   file:
-#     path: "{{ lookup('env', 'HOME') }}/.config/qtile"
-#     recurse: yes
-#     state: directory
+- name: make qtile config folder
+  tags:
+    - full-install
+    - users
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.config/qtile"
+    recurse: yes
+    state: directory
 
-# - name: copy qtile files
-#   tags:
-#     - full-install
-#     - users
-#   copy: src={{ item.src }} dest={{ item.dest }}
+- name: copy qtile files
+  tags:
+    - full-install
+    - users
+  copy: src={{ item.src }} dest={{ item.dest }}
 
-#   with_items:
-#     - {
-#         src: "qtile/autostart.sh",
-#         dest: "{{ lookup('env', 'HOME') }}/.config/qtile/autostart.sh",
-#         mode: 0755,
-#       }
-#     - {
-#         src: "qtile/config.py",
-#         dest: "{{ lookup('env', 'HOME') }}/.config/qtile/config.py",
-#       }
+  with_items:
+    - {
+        src: "qtile/autostart.sh",
+        dest: "{{ lookup('env', 'HOME') }}/.config/qtile/autostart.sh",
+        mode: 0755,
+      }
+    - {
+        src: "qtile/config.py",
+        dest: "{{ lookup('env', 'HOME') }}/.config/qtile/config.py",
+      }
 
-# - name: make fish config folder
-#   tags:
-#     - full-install
-#     - users
-#   file:
-#     path: "{{ lookup('env', 'HOME') }}/.config/fish"
-#     recurse: yes
-#     state: directory
+- name: make fish config folder
+  tags:
+    - full-install
+    - users
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.config/fish"
+    recurse: yes
+    state: directory
 
-# - name: copy fish files
-#   tags:
-#     - full-install
-#     - users
-#   copy: src={{ item.src }} dest={{ item.dest }}
-#   with_items:
-#     - { src: "fish/ftc.fish", dest: "/usr/share/doc/find-the-command/ftc.fish" }
-#     - {
-#         src: "fish/config.fish",
-#         dest: "{{ lookup('env', 'HOME') }}/.config/fish/config.fish",
-#       }
-#     - {
-#         src: "fish/fish_variables",
-#         dest: "{{ lookup('env', 'HOME') }}/.config/fish/fish_variables",
-#       }
+- name: copy fish files
+  tags:
+    - full-install
+    - users
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - { src: "fish/ftc.fish", dest: "/usr/share/doc/find-the-command/ftc.fish" }
+    - {
+        src: "fish/config.fish",
+        dest: "{{ lookup('env', 'HOME') }}/.config/fish/config.fish",
+      }
+    - {
+        src: "fish/fish_variables",
+        dest: "{{ lookup('env', 'HOME') }}/.config/fish/fish_variables",
+      }
 
-# - name: make kitty config folder
-#   tags:
-#     - full-install
-#     - users
-#   file:
-#     path: "{{ lookup('env', 'HOME') }}/.config/kitty"
-#     recurse: yes
-#     state: directory
+- name: make kitty config folder
+  tags:
+    - full-install
+    - users
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.config/kitty"
+    recurse: yes
+    state: directory
 
-# - name: copy kitty files
-#   tags:
-#     - full-install
-#     - users
-#   copy: src={{ item.src }} dest={{ item.dest }}
-#   with_items:
-#     - {
-#         src: "kitty/diff.conf",
-#         dest: "{{ lookup('env', 'HOME') }}/.config/kitty/diff.conf",
-#       }
-#     - {
-#         src: "kitty/dracula.conf",
-#         dest: "{{ lookup('env', 'HOME') }}/.config/kitty/dracula.conf",
-#       }
-#     - {
-#         src: "kitty/kitty.conf",
-#         dest: "{{ lookup('env', 'HOME') }}/.config/kitty/kitty.conf",
-#       }
+- name: copy kitty files
+  tags:
+    - full-install
+    - users
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - {
+        src: "kitty/diff.conf",
+        dest: "{{ lookup('env', 'HOME') }}/.config/kitty/diff.conf",
+      }
+    - {
+        src: "kitty/dracula.conf",
+        dest: "{{ lookup('env', 'HOME') }}/.config/kitty/dracula.conf",
+      }
+    - {
+        src: "kitty/kitty.conf",
+        dest: "{{ lookup('env', 'HOME') }}/.config/kitty/kitty.conf",
+      }
 
-# - name: make flameshot config folder
-#   tags:
-#     - full-install
-#     - users
-#   file:
-#     path: "{{ lookup('env', 'HOME') }}/.config/flameshot"
-#     recurse: yes
-#     state: directory
+- name: make flameshot config folder
+  tags:
+    - full-install
+    - users
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.config/flameshot"
+    recurse: yes
+    state: directory
 
-# - name: copy flameshot files
-#   tags:
-#     - full-install
-#     - users
-#   copy: src={{ item.src }} dest={{ item.dest }}
-#   with_items:
-#     - {
-#         src: "flameshot/flameshot.ini",
-#         dest: "{{ lookup('env', 'HOME') }}/.config/flameshot/flameshot.ini",
-#       }
+- name: copy flameshot files
+  tags:
+    - full-install
+    - users
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - {
+        src: "flameshot/flameshot.ini",
+        dest: "{{ lookup('env', 'HOME') }}/.config/flameshot/flameshot.ini",
+      }
 
-# - name: make btop config folder
-#   tags:
-#     - full-install
-#     - users
-#   file:
-#     path: "{{ lookup('env', 'HOME') }}/.config/btop/themes"
-#     recurse: yes
-#     state: directory
+- name: make btop config folder
+  tags:
+    - full-install
+    - users
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.config/btop/themes"
+    recurse: yes
+    state: directory
 
-# - name: copy btop files
-#   tags:
-#     - full-install
-#     - users
-#   copy: src={{ item.src }} dest={{ item.dest }}
-#   with_items:
-#     - {
-#         src: "btop/themes/dracula.theme",
-#         dest: "{{ lookup('env', 'HOME') }}/.config/btop/themes/dracula.theme",
-#       }
-#     - {
-#         src: "btop/btop.conf",
-#         dest: "{{ lookup('env', 'HOME') }}/.config/btop/btop.conf",
-#       }
+- name: copy btop files
+  tags:
+    - full-install
+    - users
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - {
+        src: "btop/themes/dracula.theme",
+        dest: "{{ lookup('env', 'HOME') }}/.config/btop/themes/dracula.theme",
+      }
+    - {
+        src: "btop/btop.conf",
+        dest: "{{ lookup('env', 'HOME') }}/.config/btop/btop.conf",
+      }
 
-# - name: make dunst config folder
-#   tags:
-#     - full-install
-#     - users
-#   file:
-#     path: "{{ lookup('env', 'HOME') }}/.config/dunst"
-#     recurse: yes
-#     state: directory
+- name: make dunst config folder
+  tags:
+    - full-install
+    - users
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.config/dunst"
+    recurse: yes
+    state: directory
 
-# - name: copy dunst files
-#   tags:
-#     - full-install
-#     - users
-#   copy: src={{ item.src }} dest={{ item.dest }}
-#   with_items:
-#     - {
-#         src: "dunst/dunstrc",
-#         dest: "{{ lookup('env', 'HOME') }}/.config/dunst/dunstrc",
-#         mode: 0755,
-#       }
+- name: copy dunst files
+  tags:
+    - full-install
+    - users
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - {
+        src: "dunst/dunstrc",
+        dest: "{{ lookup('env', 'HOME') }}/.config/dunst/dunstrc",
+        mode: 0755,
+      }
 
-# - name: make rofi config folder
-#   tags:
-#     - full-install
-#     - users
-#   file:
-#     path: "{{ lookup('env', 'HOME') }}/.config/rofi"
-#     recurse: yes
-#     state: directory
+- name: make rofi config folder
+  tags:
+    - full-install
+    - users
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.config/rofi"
+    recurse: yes
+    state: directory
 
-# - name: copy rofi files
-#   tags:
-#     - full-install
-#     - users
-#   copy: src={{ item.src }} dest={{ item.dest }}
-#   with_items:
-#     - {
-#         src: "rofi",
-#         dest: "{{ lookup('env', 'HOME') }}/.config",
-#         mode: 0755,
-#         recurse: yes,
-#       }
+- name: copy rofi files
+  tags:
+    - full-install
+    - users
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - {
+        src: "rofi",
+        dest: "{{ lookup('env', 'HOME') }}/.config",
+        mode: 0755,
+        recurse: yes,
+      }
 
-# - name: make rofi files 0755
-#   command: find {{ lookup('env', 'HOME') }}/.config/rofi -exec chmod -R -c 0755 {} \;
-#   register: chmod_result
-#   changed_when: 'chmod_result.stdout != ""'
+- name: make rofi files 0755
+  command: find {{ lookup('env', 'HOME') }}/.config/rofi -exec chmod -R -c 0755 {} \;
+  register: chmod_result
+  changed_when: 'chmod_result.stdout != ""'
 
-# - name: make bin config folder
-#   tags:
-#     - full-install
-#     - users
-#   file:
-#     path: "{{ lookup('env', 'HOME') }}/.local/bin"
-#     recurse: yes
-#     state: directory
+- name: make bin config folder
+  tags:
+    - full-install
+    - users
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.local/bin"
+    recurse: yes
+    state: directory
 
-# - name: copy bin files
-#   tags:
-#     - full-install
-#     - users
-#   copy: src={{ item.src }} dest={{ item.dest }}
+- name: copy bin files
+  tags:
+    - full-install
+    - users
+  copy: src={{ item.src }} dest={{ item.dest }}
 
-#   with_items:
-#     - { src: "bin", dest: "{{ lookup('env', 'HOME') }}/.local" }
+  with_items:
+    - { src: "bin", dest: "{{ lookup('env', 'HOME') }}/.local" }
 
-# - name: make bin files 0755
-#   command: find {{ lookup('env', 'HOME') }}/.local/bin -exec chmod -R -c 0755 {} \;
-#   register: chmod_result
-#   changed_when: 'chmod_result.stdout != ""'
+- name: make bin files 0755
+  command: find {{ lookup('env', 'HOME') }}/.local/bin -exec chmod -R -c 0755 {} \;
+  register: chmod_result
+  changed_when: 'chmod_result.stdout != ""'
 
-# - name: make gtk-3.0 config folder
-#   tags:
-#     - full-install
-#     - users
-#   file:
-#     path: "{{ lookup('env', 'HOME') }}/.config/gtk-3.0"
-#     recurse: yes
-#     state: directory
+- name: make gtk-3.0 config folder
+  tags:
+    - full-install
+    - users
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.config/gtk-3.0"
+    recurse: yes
+    state: directory
 
-# - name: copy gtk-3.0 files
-#   tags:
-#     - full-install
-#     - users
-#   copy: src={{ item.src }} dest={{ item.dest }}
-#   with_items:
-#     - {
-#         src: "gtk-3.0/settings.ini",
-#         dest: "{{ lookup('env', 'HOME') }}/.config/gtk-3.0/settings.ini",
-#       }
+- name: copy gtk-3.0 files
+  tags:
+    - full-install
+    - users
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - {
+        src: "gtk-3.0/settings.ini",
+        dest: "{{ lookup('env', 'HOME') }}/.config/gtk-3.0/settings.ini",
+      }
 
-# - name: make user Wallpaper folder
-#   tags:
-#     - full-install
-#     - users
-#   file:
-#     path: "{{ lookup('env', 'HOME') }}/.config/wallpapers"
-#     recurse: yes
-#     state: directory
+- name: make user Wallpaper folder
+  tags:
+    - full-install
+    - users
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.config/wallpapers"
+    recurse: yes
+    state: directory
 
-# - name: copy user Wallpaper files
-#   tags:
-#     - full-install
-#     - users
-#   copy: src={{ item.src }} dest={{ item.dest }}
-#   with_items:
-#     - {
-#         src: "wallpapers/wallpaper.png",
-#         dest: "{{ lookup('env', 'HOME') }}/.config/wallpapers/wallpaper.png",
-#       }
+- name: copy user Wallpaper files
+  tags:
+    - full-install
+    - users
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - {
+        src: "wallpapers/wallpaper.png",
+        dest: "{{ lookup('env', 'HOME') }}/.config/wallpapers/wallpaper.png",
+      }
 
-# - name: make system Wallpaper folder
-#   tags:
-#     - full-install
-#     - users
-#   become: True
-#   file:
-#     path: "/usr/share/wallpapers"
-#     recurse: yes
-#     state: directory
+- name: make system Wallpaper folder
+  tags:
+    - full-install
+    - users
+  become: True
+  file:
+    path: "/usr/share/wallpapers"
+    recurse: yes
+    state: directory
 
-# - name: copy user Wallpaper files
-#   tags:
-#     - full-install
-#     - users
-#   copy: src={{ item.src }} dest={{ item.dest }}
-#   with_items:
-#     - {
-#         src: "lightdm/.xsession",
-#         dest: "{{ lookup('env', 'HOME') }}/.xsession",
-#         mode: 0744,
-#       }
+- name: copy user Wallpaper files
+  tags:
+    - full-install
+    - users
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - {
+        src: "lightdm/.xsession",
+        dest: "{{ lookup('env', 'HOME') }}/.xsession",
+        mode: 0744,
+      }
 
-# - name: copy system lightdm files
-#   tags:
-#     - full-install
-#     - users
-#   become: True
-#   copy: src={{ item.src }} dest={{ item.dest }}
-#   with_items:
-#     - {
-#         src: "lightdm/slick-greeter.conf",
-#         dest: "/etc/lightdm/slick-greeter.conf",
-#       }
+- name: copy system lightdm files
+  tags:
+    - full-install
+    - users
+  become: True
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - {
+        src: "lightdm/slick-greeter.conf",
+        dest: "/etc/lightdm/slick-greeter.conf",
+      }
 
 - name: update lightdm config files
   shell: "{{ item }}"
