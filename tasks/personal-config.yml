@@ -286,5 +286,5 @@
   command: "{{ item }}"
   become: True
   with_items:
-    - "sed -i \'s/^#greeter-session=example-gtk-gnome/greeter-session=lightdm-slick-greeter/\' /etc/lightdm/lightdm.conf"
+    - "sed -i \\'s/^#greeter-session=example-gtk-gnome/greeter-session=lightdm-slick-greeter/\\' /etc/lightdm/lightdm.conf"
     - "sed -i 's/^#!\/bin\/sh/#!\/bin\/bash/' /etc/lightdm/Xsession"
