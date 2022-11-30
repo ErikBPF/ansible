@@ -283,8 +283,8 @@
       }
 
 - name: update lightdm config files
-  command: "sed -i  {{ item }}"
+  command: "{{ item }}"
   become: True
   with_items:
-    - "'s/^#greeter-session=example-gtk-gnome/greeter-session=lightdm-slick-greeter/' /etc/lightdm/lightdm.conf"
-    - "'s/^#!\/bin\/sh/#!\/bin\/bash/' /etc/lightdm/Xsession"
+    - "sed -i 's/^#greeter-session=example-gtk-gnome/greeter-session=lightdm-slick-greeter/' /etc/lightdm/lightdm.conf"
+    - "sed -i 's/^#!\/bin\/sh/#!\/bin\/bash/' /etc/lightdm/Xsession"
