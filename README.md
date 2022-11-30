@@ -1,3 +1,3 @@
 # ansible
 
-ansible-pull --ask-become -U https://github.com/ErikBPF/ansible.git
+make ansible-pull BECOME_PASS=[become-password] VAULT_PASS=[vault_password]
