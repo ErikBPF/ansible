@@ -2,10 +2,11 @@
   tags:
     - full-install
     - users
+  become: true
   file:
     path: "{{ lookup('env', 'HOME') }}/.ssh"
     recurse: yes
-    mode: 750
+    mode: 700
     state: directory
 
 - name: copy ssh files
@@ -13,24 +14,25 @@
     - full-install
     - users
   copy: src={{ item.src }} dest={{ item.dest }}
+  become: true
   with_items:
     - {
         src: "ssh/id_rsa",
         dest: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa",
-        mode: 640,
+        mode: 600,
       }
     - {
         src: "ssh/id_rsa.pub",
         dest: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa.pub",
-        mode: 640,
+        mode: 600,
       }
     - {
         src: "ssh/id_ed25519",
         dest: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519",
-        mode: 640,
+        mode: 600,
       }
     - {
         src: "ssh/id_ed25519.pub",
         dest: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519.pub",
-        mode: 640,
+        mode: 600,
       }
