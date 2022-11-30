@@ -38,6 +38,7 @@
       - pa-applet-git
       - blueman
       - brightnessctl
+      - xdg-user-dir
     use: yay
     state: present
     update_cache: yes
