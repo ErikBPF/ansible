@@ -5,7 +5,7 @@
   file:
     path: "{{ lookup('env', 'HOME') }}/.ssh"
     recurse: yes
-    mode: 760
+    mode: 770
     state: directory
 
 - name: copy ssh files
