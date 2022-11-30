@@ -2,7 +2,7 @@
   command: "{{ item }}"
   become: True
   with_items:
-    - xdg-user-dirs-update -- force
+    - xdg-user-dirs-update --force
     - echo >> /etc/profile
     - echo 'export XDG_CONFIG_HOME="$HOME/.config"' >> /etc/profile
     - echo 'export XDG_CACHE_HOME="$HOME/.cache"' >> /etc/profile
