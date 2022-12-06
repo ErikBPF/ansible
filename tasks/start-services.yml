@@ -1,3 +1,31 @@
+- name: adding existing user erik to group docker
+  user:
+    name: erik
+    groups: docker
+    append: yes
+  become: true
+
+- name: adding existing user erik to group libvirt
+  user:
+    name: erik
+    groups: libvirt
+    append: yes
+  become: true
+
+- name: adding existing user erik to group audio
+  user:
+    name: erik
+    groups: audio
+    append: yes
+  become: true
+
+- name: adding existing user erik to group video
+  user:
+    name: erik
+    groups: video
+    append: yes
+  become: true
+
 - name: start bluetooth.service
   tags:
     - full-install
